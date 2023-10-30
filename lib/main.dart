@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nishack2023/club.dart';
 import 'package:nishack2023/navbar.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: NavBar(),
     );
   }

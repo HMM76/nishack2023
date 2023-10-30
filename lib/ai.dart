@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-
-class _AIHelper extends StatefulWidget {
-  const _AIHelper({super.key});
+class AIHelper extends StatefulWidget {
+  const AIHelper({Key? key});
 
   @override
-  State<_AIHelper> createState() => __AIHelperState();
+  State<AIHelper> createState() => _AIHelperState();
 }
 
-class __AIHelperState extends State<_AIHelper> {
+class _AIHelperState extends State<AIHelper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
