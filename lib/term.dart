@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nishack2023/subjbut.dart';
-
+import 'package:nishack2023/unit.dart';
 class TermPage extends StatelessWidget {
   const TermPage({super.key});
 
@@ -32,13 +32,13 @@ class TermPage extends StatelessWidget {
               child: Column(
                   children: [
 
-                    SubjBut(grade: "I Toqsan",),
+                    UnitBut(grade: "I Toqsan",),
                     SizedBox(height: 30,),
-                    SubjBut(grade: "II Toqsan",),
+                    UnitBut(grade: "II Toqsan",),
                     SizedBox(height: 30,),
-                    SubjBut(grade: "III Toqsan",),
+                    UnitBut(grade: "III Toqsan",),
                     SizedBox(height: 30,),
-                    SubjBut(grade: "IV Toqsan",),
+                    UnitBut(grade: "IV Toqsan",),
                     SizedBox(height: 30,),
                     
                   ],
