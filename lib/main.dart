@@ -1,15 +1,27 @@
 import 'dart:ui';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
+import 'package:theappletsgo/chatgpt_api.dart';
+import 'package:theappletsgo/navbar.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: FirstPage(),
+void main() async {
+  // ChatGptCommunicator.initSubjectInfoGeneration("Yoooo");
+  OpenAI.apiKey = "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";
+  runApp(MaterialApp(
+    home: FirstPage(data: ChatGptCommunicator.getData()),
   ));
 }
 
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+class FirstPage extends StatefulWidget
+{
+  final String data;
+  const FirstPage({Key? key, required this.data}) : super(key: key);
 
+  @override
+  _FirstPageState createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +32,13 @@ class FirstPage extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
       ),
+      bottomNavigationBar: const NavBar(),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Center(
+            const Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/nigg.jpg'),
                 radius: 50.0, 
@@ -35,15 +48,15 @@ class FirstPage extends StatelessWidget {
               height: 70.0,
               color: Colors.grey[300],
             ),
-            Text(
+            const Text(
               'NAME',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2.0,
               )
             ),
-            SizedBox(height: 10.0),
-            Text(
+            const SizedBox(height: 10.0),
+            const Text(
               'Chun-li',
               style: TextStyle(
                 color: Colors.amberAccent,
@@ -53,43 +66,38 @@ class FirstPage extends StatelessWidget {
               )
             ),
             SizedBox(height: 10.0),
-            Text(
+            const Text(
                 'LEVEL',
                 style: TextStyle(
                   color: Colors.grey,
                   letterSpacing: 2.0,
                 )
             ),
-            SizedBox(height: 10.0),
-            Text(
+            const SizedBox(height: 10.0),
+            const Text(
                 'negoorr',
                 style: TextStyle(
                   color: Colors.amberAccent,
                   letterSpacing: 2.0,
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
-                )
-            ),
-            SizedBox(height: 30.0),
-            Row(
-              children: <Widget>[
-                Icon(
-                  Icons.email,
-                  color:Colors.grey,
-                  size: 20.0
                 ),
-                Text(
-                  'chun-li@mail.com',
-                  style: TextStyle(
-                    fontSize  : 20,
-                    fontFamily: 'IndieFlower',
-                    color: Colors.grey,
-                  )
-                )
-              ],
-            )
+            ),
+            Text(widget.data,
+              style: const TextStyle(
+                color: Colors.amberAccent,
+                letterSpacing: 2.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            TextButton(child: Text("Brooo"), onPressed: (){
+              debugPrint("I have been presesd nigga");
+              ChatGptCommunicator.initSubjectInfoGeneration("Yoooo");
+            },)
           ]
         )
+
       )
     );
   }
