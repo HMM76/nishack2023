@@ -5,51 +5,52 @@ class ChatGptCommunicator
 {
     static String data = "";
 
-    static String getData()
-    {
-      return data;
-    }
-
     const ChatGptCommunicator();
 
-    static Future<void> initSubjectInfoGeneration(String query) async {
-      Stream<OpenAIStreamChatCompletionModel> chatStream = OpenAI.instance.chat.createStream(
-            model: "gpt-3.5-turbo",
-            messages: [
-              OpenAIChatCompletionChoiceMessageModel(
-                content: "hello",
-                role: OpenAIChatMessageRole.system,
-              )
-            ],
-          );
+    static Future<String> initSubjectInfoGeneration(String query) async {
+      OpenAIChatCompletionModel chatCompletion = await OpenAI.instance.chat.create(
+        model: "gpt-3.5-turbo",
+        messages: [
+          OpenAIChatCompletionChoiceMessageModel(
+            content: "hello, what is Flutter and Dart ?",
+            role: OpenAIChatMessageRole.user,
+          ),
+        ],
+      );
 
-        chatStream.listen((streamChatCompletion) {
-            final content = streamChatCompletion.choices.first.delta.content;
-
-            // change UI here
-            data = streamChatCompletion.choices.first.delta.content.toString();
-            print(data);
-            debugPrint(data);
-        });
+      return chatCompletion.choices.first.message.content.toString();
     }
 
-    Future<void> initSorGeneration(String info) async
+    Future<String> initSorGeneration(String info) async
     {
-        Stream<OpenAIStreamChatCompletionModel> chatStream = OpenAI.instance.chat.createStream(
-            model: "gpt-3.5-turbo",
-            messages: [
-              OpenAIChatCompletionChoiceMessageModel(
-                content: "hello",
-                role: OpenAIChatMessageRole.system,
-              )
-            ],
-          );
 
-        chatStream.listen((streamChatCompletion) {
-            final content = streamChatCompletion.choices.first.delta.content;
-            // change UI here
-            print(content);
-            debugPrint(content);
-        });
+      OpenAIChatCompletionModel chatCompletion = await OpenAI.instance.chat.create(
+        model: "gpt-3.5-turbo",
+        messages: [
+          OpenAIChatCompletionChoiceMessageModel(
+            content: "hello, what is Flutter and Dart ?",
+            role: OpenAIChatMessageRole.user,
+          ),
+        ],
+      );
+
+      return chatCompletion.choices.first.message.content.toString();
+
+        // Stream<OpenAIStreamChatCompletionModel> chatStream = OpenAI.instance.chat.createStream(
+        //     model: "gpt-3.5-turbo",
+        //     messages: [
+        //       OpenAIChatCompletionChoiceMessageModel(
+        //         content: "hello",
+        //         role: OpenAIChatMessageRole.system,
+        //       )
+        //     ],
+        //   );
+        //
+        // chatStream.listen((streamChatCompletion) {
+        //     final content = streamChatCompletion.choices.first.delta.content;
+        //     // change UI here
+        //     print(content);
+        //     debugPrint(content);
+        // });
     }
 }

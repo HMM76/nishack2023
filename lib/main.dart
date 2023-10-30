@@ -6,9 +6,13 @@ import 'package:theappletsgo/navbar.dart';
 
 void main() async {
   // ChatGptCommunicator.initSubjectInfoGeneration("Yoooo");
-  OpenAI.apiKey = "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";
+  OpenAI.apiKey = "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";
+
+  await ChatGptCommunicator.initSubjectInfoGeneration("What is the most normal weather");
+
   runApp(MaterialApp(
-    home: FirstPage(data: ChatGptCommunicator.getData()),
+    debugShowCheckedModeBanner: true,
+    home: FirstPage(data: "iu"),
   ));
 }
 
@@ -22,8 +26,11 @@ class FirstPage extends StatefulWidget
 }
 
 class _FirstPageState extends State<FirstPage> {
+  String data = "";
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
@@ -41,7 +48,7 @@ class _FirstPageState extends State<FirstPage> {
             const Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/nigg.jpg'),
-                radius: 50.0, 
+                radius: 50.0,
               )
             ),
             Divider(
@@ -92,8 +99,7 @@ class _FirstPageState extends State<FirstPage> {
               ),
             ),
             TextButton(child: Text("Brooo"), onPressed: (){
-              debugPrint("I have been presesd nigga");
-              ChatGptCommunicator.initSubjectInfoGeneration("Yoooo");
+
             },)
           ]
         )
@@ -101,5 +107,5 @@ class _FirstPageState extends State<FirstPage> {
       )
     );
   }
-  
+
 }
