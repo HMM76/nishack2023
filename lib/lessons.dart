@@ -39,7 +39,26 @@ class _LessonsState extends State<Lessons> {
       ),
       backgroundColor: Color.fromRGBO(194, 217, 255, 1),
       drawer: Drawer(
-        // ... Your existing drawer code
+        backgroundColor: Color.fromRGBO(194, 217, 255, 1),
+        child: Column(
+          children: [
+            SizedBox(height: 50,),
+            Text("Taqyryptar", style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500, color: Color.fromRGBO(25, 4, 130, 1)),),
+            SizedBox(height: 80,),
+            SideButt(grade: "SI Units"),
+            SizedBox(height: 30,),
+            SideButt(grade: "Logarithms"),
+            SizedBox(height: 30,),
+            SideButt(grade: "Adsolute Errors"),
+            SizedBox(height: 30,),
+            SideButt(grade: "Comparative Errors"),
+            SizedBox(height: 30,),
+            SideButt(grade: "Error Graphs"),
+            SizedBox(height: 30,),
+            SideButt(grade: "Straight Graphs"),
+
+          ],
+        ),
       ),
       body: Column(
         children: [

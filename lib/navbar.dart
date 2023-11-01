@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:nishack2023/ai.dart';
 import 'package:nishack2023/club.dart';
+import 'package:nishack2023/clubz.dart';
 import 'package:nishack2023/profile.dart';
 import 'package:nishack2023/subjbut.dart';
 
@@ -15,7 +16,8 @@ class _NavBarState extends State<NavBar> {
   int currentIndex = 0;
   final screens = [
     Clubs(),
-    AIHelper(),
+    Clubzz()
+    
   ];
   @override
   Widget build(BuildContext context) {
